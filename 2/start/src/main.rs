@@ -33,6 +33,27 @@ fn func_ex_print_result<T: std::fmt::Display, E: std::fmt::Display>(ans: Result<
     }
 }
 
+fn add_i32(x: i32, y: i32) -> i32 {
+    x + y
+}
+
+#[test]
+fn test1() {
+    assert_eq!(add_i32(1, 2), 3);
+}
+
+#[test]
+fn test2() {
+    assert_eq!(add_i32(2, 4), 7);
+}
+
+// mod module_hello {
+//     pub fn print_hello() {
+//         println!("Hello");
+//     }
+// }
+mod module_hello;
+
 fn main() {
     func_ex_print_some(func_ex_div_some(10, 5));
     func_ex_print_some(func_ex_div_some(10, 0));
@@ -40,4 +61,8 @@ fn main() {
     func_ex_print_some_match(func_ex_div_some(10, 0));
     func_ex_print_result(func_ex_div_result(10, 5));
     func_ex_print_result(func_ex_div_result(10, 0));
+
+    println!("{}", add_i32(2, 5));
+
+    module_hello::print_hello();
 }
